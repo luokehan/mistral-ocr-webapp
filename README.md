@@ -6,7 +6,8 @@
 ![React](https://img.shields.io/badge/技术-React-61dafb)
 
 一个美观、功能强大的OCR文档识别系统，具有莫兰迪风格设计和四季交替的动态背景。本系统能够从PDF文件中提取文本内容，并提供精美格式化的输出，支持表格、数学公式和丰富的Markdown渲染。
-
+## 网站演示
+https://ocr.kehan.ink/
 ## ✨ 特色功能
 
 - **文档OCR识别**: 从PDF文件中准确提取文本、表格和图像内容
@@ -163,4 +164,4 @@ const getElementCount = (type: string): number => {
 
 ---
 
-Crafted with ❤️ by [您的名字/组织] 
+Crafted with ❤️ by [kehanluo] 
