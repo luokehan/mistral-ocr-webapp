@@ -1,0 +1,761 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* 主要颜色 */
+  --foreground-rgb: 67, 62, 58; /* morandi-900 */
+  --background-start-rgb: 248, 247, 246; /* morandi-50 */
+  --background-end-rgb: 248, 247, 246; /* morandi-50 */
+  
+  /* 莫兰迪颜色系统 */
+  --morandi-primary: 165, 153, 146; /* morandi-500 */
+  --morandi-secondary: 118, 143, 161; /* morandiBlue-500 */
+  --morandi-accent: 182, 151, 144; /* morandiPink-500 */
+  --morandi-light: 248, 247, 246; /* morandi-50 */
+  --morandi-dark: 67, 62, 58; /* morandi-900 */
+  
+  /* 其他莫兰迪RGB值 */
+  --morandi-100-rgb: 232, 230, 228;
+  --morandi-200-rgb: 216, 211, 208;
+  --morandi-300-rgb: 199, 192, 188;
+  --morandi-400-rgb: 181, 171, 165;
+  --morandi-600-rgb: 149, 135, 121;
+  --morandi-700-rgb: 122, 112, 105;
+  --morandi-800-rgb: 95, 86, 82;
+  
+  --morandiBlue-100-rgb: 223, 229, 232;
+  --morandiBlue-200-rgb: 197, 208, 214;
+  --morandiBlue-300-rgb: 171, 187, 196;
+  --morandiBlue-400-rgb: 145, 165, 179;
+  --morandiBlue-500-rgb: 118, 143, 161;
+  
+  --morandiGreen-100-rgb: 221, 229, 226;
+  --morandiGreen-200-rgb: 194, 211, 205;
+  --morandiGreen-300-rgb: 167, 192, 185;
+  --morandiGreen-400-rgb: 141, 174, 164;
+  --morandiGreen-500-rgb: 115, 156, 143;
+  
+  --morandiPink-100-rgb: 234, 218, 216;
+  --morandiPink-200-rgb: 221, 195, 192;
+  --morandiPink-300-rgb: 208, 173, 168;
+  --morandiPink-400-rgb: 195, 151, 144;
+  --morandiPink-500-rgb: 182, 128, 120;
+  
+  /* 动画和过渡参数 */
+  --transition-slow: 0.5s ease;
+  --transition-medium: 0.3s ease;
+  --transition-fast: 0.15s ease;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* 添加莫兰迪主题样式类 */
+@layer components {
+  .morandi-card {
+    @apply bg-white rounded-xl shadow-morandi border border-morandi-100 p-6 transition-all duration-300 hover:shadow-morandi-md;
+  }
+
+  .morandi-button {
+    @apply rounded-xl bg-gradient-to-r from-morandiBlue-300 to-morandiBlue-400 text-white font-medium transition-all transform shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-morandiBlue-300 focus:ring-opacity-50;
+  }
+
+  .morandi-button:hover {
+    @apply -translate-y-0.5;
+    filter: brightness(1.05);
+  }
+
+  .morandi-button-outline {
+    @apply rounded-xl border border-morandi-300 bg-white text-morandi-700 font-medium transition-all hover:bg-morandi-50 focus:outline-none focus:ring-2 focus:ring-morandi-300 focus:ring-opacity-50;
+  }
+
+  .morandi-input {
+    @apply border border-morandi-200 rounded-xl p-2.5 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-morandiBlue-300 focus:border-transparent;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .morandi-select {
+    @apply border border-morandi-200 rounded-xl p-2.5 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-morandiBlue-300 focus:border-transparent;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23A5A192' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .morandi-section {
+    @apply px-6 py-12 bg-gradient-to-b from-white to-morandi-50 rounded-2xl shadow-morandi;
+  }
+
+  .morandi-heading {
+    @apply text-morandi-800 font-semibold tracking-tight;
+  }
+
+  .morandi-subheading {
+    @apply text-morandi-600 font-medium tracking-tight;
+  }
+
+  .shadow-morandi {
+    box-shadow: 0 2px 8px rgba(var(--morandi-primary), 0.15);
+  }
+
+  .shadow-morandi-md {
+    box-shadow: 0 4px 12px rgba(var(--morandi-primary), 0.15);
+  }
+
+  .shadow-morandi-lg {
+    box-shadow: 0 8px 20px rgba(var(--morandi-primary), 0.15);
+  }
+}
+
+/* 修改 Markdown 样式以符合莫兰迪主题 */
+.markdown-body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  color: rgb(var(--morandi-dark));
+  letter-spacing: 0.01em;
+}
+
+/* 标题样式 */
+.markdown-body h1 {
+  font-size: 2em;
+  margin-top: 1.5em;
+  margin-bottom: 0.7em;
+  font-weight: 600;
+  border-bottom: 1px solid rgb(var(--morandi-primary), 0.2);
+  padding-bottom: 0.3em;
+  color: rgb(var(--morandi-dark));
+  letter-spacing: -0.02em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
+  border-bottom: 1px solid rgb(var(--morandi-primary), 0.2);
+  padding-bottom: 0.3em;
+  color: rgb(var(--morandi-dark));
+  letter-spacing: -0.01em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  color: rgb(var(--morandi-dark));
+}
+
+/* 表格样式增强 */
+.markdown-body table,
+.prose table,
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5em 0;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(var(--morandi-primary), 0.1);
+  border: 1px solid rgba(var(--morandi-primary), 0.1);
+}
+
+.markdown-body th,
+.markdown-body td,
+.prose th,
+.prose td,
+.table th,
+.table td {
+  border: 1px solid rgba(var(--morandi-primary), 0.1);
+  padding: 0.8rem 1.2rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.markdown-body th,
+.prose th,
+.table th {
+  background-color: rgba(var(--morandi-primary), 0.05);
+  font-weight: 600;
+  color: rgb(var(--morandi-dark));
+  border-bottom: 2px solid rgba(var(--morandi-primary), 0.2);
+  letter-spacing: 0.01em;
+}
+
+.markdown-body tr:nth-child(even),
+.prose tr:nth-child(even),
+.table tr:nth-child(even) {
+  background-color: rgba(var(--morandi-light), 0.7);
+}
+
+.markdown-body tr:hover,
+.prose tr:hover,
+.table tr:hover {
+  background-color: rgba(var(--morandi-primary), 0.05);
+  transition: background-color 0.2s ease-in;
+}
+
+/* 数学公式样式增强 - MathJax */
+.MathJax {
+  font-size: 1.1em !important;
+  margin: 0 0.2em;
+  color: rgb(var(--morandi-dark)) !important;
+}
+
+/* 公式块 */
+.MathJax_Display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.8em 0;
+  margin: 1.2em 0;
+  text-align: center;
+  background-color: rgba(var(--morandi-light), 0.6);
+  border-radius: 8px;
+  box-shadow: inset 0 0 4px rgba(var(--morandi-primary), 0.1);
+}
+
+/* 确保行内公式和文本垂直对齐 */
+.MathJax_CHTML {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+/* 增加公式中符号的可辨识度 */
+.MathJax .mi {
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  color: rgb(var(--morandi-dark)) !important;
+}
+
+/* 强制表格内的文字自动换行 */
+.markdown-body table td,
+.prose table td,
+.table td {
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 300px;
+}
+
+/* 代码样式 */
+.markdown-body code {
+  font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  padding: 0.2em 0.4em;
+  background-color: rgba(var(--morandi-primary), 0.08);
+  border-radius: 4px;
+  font-size: 85%;
+  color: rgb(var(--morandi-dark));
+}
+
+/* 代码块 */
+.markdown-body pre {
+  background-color: rgba(var(--morandi-primary), 0.05);
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1.2em 0;
+  overflow-x: auto;
+  box-shadow: inset 0 0 4px rgba(var(--morandi-primary), 0.1);
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 90%;
+}
+
+/* 引用块 */
+.markdown-body blockquote {
+  border-left: 4px solid rgba(var(--morandi-secondary), 0.5);
+  padding: 0.8em 1em;
+  color: rgba(var(--morandi-dark), 0.8);
+  margin: 1.2em 0;
+  background-color: rgba(var(--morandi-secondary), 0.05);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+/* 图片样式 */
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(var(--morandi-primary), 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.markdown-body img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(var(--morandi-primary), 0.15);
+}
+
+/* 强调样式 */
+.markdown-body strong,
+.markdown-body b {
+  font-weight: 600;
+  color: rgb(var(--morandi-secondary));
+}
+
+.markdown-body em,
+.markdown-body i {
+  font-style: italic;
+  color: rgb(var(--morandi-accent));
+}
+
+/* 链接样式 */
+.markdown-body a {
+  color: rgb(var(--morandi-secondary));
+  text-decoration: none;
+  border-bottom: 1px solid rgba(var(--morandi-secondary), 0.3);
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  padding-bottom: 1px;
+}
+
+.markdown-body a:hover {
+  color: rgb(var(--morandi-accent));
+  border-bottom-color: rgba(var(--morandi-accent), 0.6);
+  text-decoration: none;
+}
+
+/* 列表样式 */
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 1.8em;
+  margin: 1em 0;
+}
+
+.markdown-body ul {
+  list-style-type: none;
+}
+
+.markdown-body ul li {
+  position: relative;
+}
+
+.markdown-body ul li::before {
+  content: "";
+  position: absolute;
+  left: -1.2em;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(var(--morandi-primary), 0.5);
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+  counter-reset: item;
+}
+
+.markdown-body ol li {
+  counter-increment: item;
+}
+
+.markdown-body li + li {
+  margin-top: 0.4em;
+}
+
+/* 分隔线 */
+.markdown-body hr {
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(var(--morandi-primary), 0.3), transparent);
+  border: none;
+  margin: 2.5em 0;
+}
+
+/* 添加独特的背景图案 */
+.bg-morandi-pattern {
+  background-color: rgb(var(--background-start-rgb));
+  background-image: 
+    radial-gradient(circle at 25px 25px, rgba(var(--morandi-primary), 0.15) 2%, transparent 0%), 
+    radial-gradient(circle at 75px 75px, rgba(var(--morandi-primary), 0.1) 2%, transparent 0%);
+  background-size: 100px 100px;
+}
+
+.bg-morandi-gradient {
+  background: linear-gradient(135deg, 
+    rgba(var(--morandi-light), 0.8) 0%, 
+    rgba(var(--morandi-light), 0.95) 50%,
+    rgba(var(--morandiBlue-100-rgb), 0.3) 100%);
+}
+
+/* 创意卡片效果 */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--morandi-primary), 0.1);
+  box-shadow: 0 8px 32px rgba(var(--morandi-primary), 0.1);
+}
+
+/* 悬浮和焦点效果 */
+.hover-float {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-float:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(var(--morandi-primary), 0.15);
+}
+
+/* 装饰元素 */
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(var(--morandi-accent), 0.15);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.decorative-circle-1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -150px;
+}
+
+.decorative-circle-2 {
+  width: 250px;
+  height: 250px;
+  bottom: -100px;
+  right: -100px;
+  background: rgba(var(--morandiBlue-500-rgb), 0.1);
+}
+
+/* 创意分割线 */
+.creative-divider {
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(var(--morandi-primary), 0.3) 50%, 
+    transparent 100%);
+  margin: 2rem 0;
+  position: relative;
+}
+
+.creative-divider::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(var(--morandi-accent), 0.5);
+  border-radius: 50%;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 现代按钮效果 */
+.btn-modern {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-modern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+/* 毛玻璃效果 */
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--morandi-primary), 0.1);
+}
+
+.frosted-glass-dark {
+  background: rgba(var(--morandi-dark), 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 流体背景效果 */
+.fluid-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.fluid-bg::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--morandiBlue-100-rgb), 0.3) 0%,
+    rgba(var(--morandiPink-100-rgb), 0.2) 30%,
+    rgba(var(--morandi-light), 0.1) 70%
+  );
+  animation: rotate 30s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 闪光效果 */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 文本效果 */
+.gradient-text {
+  background: linear-gradient(to right, rgb(var(--morandiBlue-500-rgb)), rgb(var(--morandiPink-500-rgb)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(var(--morandi-dark), 0.1);
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(var(--morandi-dark), 0.1);
+}
+
+/* 动画延迟 */
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-900 {
+  animation-delay: 0.9s;
+}
+
+/* 平滑淡入动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* 适合聊天界面的浮动动画 */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* 较慢的脉冲动画 */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 波浪形状的装饰元素 */
+.rounded-blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+@keyframes rotate-blob {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+.animate-rotate-blob {
+  animation: rotate-blob 15s ease-in-out infinite;
+}
+
+/* 天气背景样式增强 */
+.weather-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 让内容元素有轻微的毛玻璃效果，增强天气背景的视觉效果 */
+.glass-card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 确保天气背景不影响实际交互 */
+.z-10 {
+  z-index: 10;
+}
+
+/* 增强装饰性元素，配合天气效果 */
+.decorative-circle {
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  z-index: 1;
+}
+
+/* 微调装饰圆形，与天气背景更好地结合 */
+.decorative-circle-1 {
+  width: 40vw;
+  height: 40vw;
+  left: -10vw;
+  top: -10vw;
+  background: rgba(var(--morandi-primary), 0.05);
+  filter: blur(60px);
+}
+
+.decorative-circle-2 {
+  width: 30vw;
+  height: 30vw;
+  right: -5vw;
+  bottom: -5vw;
+  background: rgba(var(--morandiBlue-200-rgb), 0.1);
+  filter: blur(50px);
+}
+
+/* 确保按钮可点击和交互 */
+button, 
+.morandi-button, 
+.morandi-button-outline,
+.btn-modern {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* 确保点击效果视觉反馈 */
+button:active, 
+.morandi-button:active, 
+.morandi-button-outline:active,
+.btn-modern:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* 确保悬停效果正常显示 */
+button:hover, 
+.morandi-button:hover, 
+.morandi-button-outline:hover,
+.btn-modern:hover {
+  opacity: 0.9;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .morandi-card, 
+  .morandi-button, 
+  .morandi-button-outline,
+  .morandi-input,
+  .morandi-select,
+  .btn-modern,
+  .glass-card,
+  .markdown-body table,
+  .markdown-body pre,
+  .markdown-body code,
+  .markdown-body blockquote {
+    border-radius: 0.75rem !important;
+  }
+  
+  /* 确保内容不会被遮挡 */
+  .markdown-body {
+    padding-top: 0.5rem;
+  }
+  
+  /* 改善移动端按钮的触摸体验 */
+  button,
+  .morandi-button,
+  .morandi-button-outline,
+  .btn-modern {
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    padding: 0.5rem 0.75rem;
+    margin: 0.125rem;
+  }
+  
+  /* 优化移动端表格显示 */
+  .markdown-body table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+} 
