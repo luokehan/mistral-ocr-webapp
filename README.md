@@ -1,4 +1,4 @@
-# OCR智能文档识别系统
+# Mistral OCR Web App
 
 ![四季背景效果](https://img.shields.io/badge/特色-四季动态背景-brightgreen)
 ![OCR功能](https://img.shields.io/badge/功能-OCR文档识别-blue)
@@ -83,6 +83,7 @@ npm run start
    - 在JSON或Markdown标签页查看识别结果
    - 使用复制、下载按钮导出内容
    - 欣赏四季变换的背景效果
+5.**温馨提示**：由于mistral输出的latex有格式上的问题，markdown演示的并不好，本站主要功能是把pdf转为ai能读懂的markdown形式     
 
 ## 🌈 四季背景效果
 
